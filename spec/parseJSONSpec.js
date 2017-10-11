@@ -1,6 +1,30 @@
 // test cases are described in fixtures.js
 describe('parseJSON', function() {
+  
+  it('should work on string', function() {
+    var result = parseJSON('"string me"');
+    var expected = JSON.parse('"string me"');
+    expect(expected).to.equal(result);
+  });
+  
+  it('should work on boolean', function() {
+    var result = parseJSON('true');
+    var expected = JSON.parse('true');
+    expect(expected).to.equal(result);
+  });
 
+  it('should work on numbers', function() {
+    var result = parseJSON('1');
+    var expected = JSON.parse('1');
+    expect(expected).to.equal(result);
+  });
+
+  it('should work on null', function() {
+    var result = parseJSON('null');
+    var expected = JSON.parse('null');
+    expect(expected).to.equal(result);
+  });
+  
   it('should match the result of calling JSON.parse', function() {
     parseableStrings.forEach(function(test) {
       var result = parseJSON(test);
@@ -8,7 +32,7 @@ describe('parseJSON', function() {
       var equality = _.isEqual(result, expected); // why can't we use `===` here?
       // Replace this line with an `expect` statement that tests
       // the behavior described by the `it` string
-      throw new Error('Test is missing.')
+      expect(equality).to.be(true);
     });
   });
 
@@ -25,3 +49,4 @@ describe('parseJSON', function() {
   });
 
 });
+  

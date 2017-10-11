@@ -11,7 +11,7 @@ var stringifyJSON = function(obj) {
     var keys = Object.keys(obj);
     
     keys = keys.filter(key => typeof obj[key] !== 'function' && obj[key] !== undefined);
-    //key => stringifyJSON(key) + ':' + stringifyJSON(obj[key])
+
     return '{' + keys.map(function(key) {
       return stringifyJSON(key) + ':' + stringifyJSON(obj[key]);
     }) + '}';
